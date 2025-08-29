@@ -62,11 +62,14 @@ li{
  background: #f9f9f9;
  border-radius: 8px;
  transition: 0.3s;
+ cursor: pointer;
 }
 
-li.completed span{
+.completed {
  text-decoration: line-through;
  color: gray;
+ background: #e1e1e1;
+ transition: 0.3s;
 }
 
 li button{

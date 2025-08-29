@@ -1,26 +1,24 @@
+let tasks = []
+let status = []
 function addTask() {
-  const input = document.getElementById("taskInput");
-  const taskText = input.value.trim();
+  const input = document.getElementById("task-Input")
+  const taskInput = input.value.trim()
 
-  if (taskText === "") return;
+  if(taskInput === ""){
+    return
+  }
+  // tasks.push(taskInput)
+  // console.log(tasks)
 
-  const li = document.createElement("li");
+  const li = document.createElement("li")
+  li.textContent = taskInput
 
-  const span = document.createElement("span");
-  span.textContent = taskText;
-  span.style.cursor = "pointer";
+  li.onclick = () => {
+    li.classList.toggle("completed")
+    
+  }
 
-  span.onclick = () => {
-    li.classList.toggle("completed");
-  };
+  document.getElementById("task-list").appendChild(li)
 
-  const delBtn = document.createElement("button");
-  delBtn.textContent = "X";
-  delBtn.onclick = () => li.remove();
-
-  li.appendChild(span);
-  li.appendChild(delBtn);
-
-  document.getElementById("taskList").appendChild(li);
-  input.value = "";
+  input.value = ""
 }
