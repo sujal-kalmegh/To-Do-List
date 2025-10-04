@@ -8,8 +8,8 @@ document.getElementById("task-Input").addEventListener("keypress", function(even
   }
 })
 
-let tasks = []
-let status = []
+// let tasks = []
+// let status = []
 function addTask() {
   const input = document.getElementById("task-Input")
   const taskInput = input.value.trim()
@@ -27,19 +27,23 @@ function addTask() {
 
   // li.textContent = taskInput
 
-  span.onclick = () => {
-    li.classList.toggle("completed")
-  }
+  // span.addEventListener("click", e =>{
+  //   span.classList.toggle("completed")
+  // })
 
   const delBtn = document.createElement("button")
   delBtn.textContent = "❌"
-  delBtn.onclick = () => {
-    li.remove()
-  }
-
+  delBtn.addEventListener("click", function (e){
+    e.stopPropagation();
+    li.remove();
+  })
   li.appendChild(span)
   li.appendChild(delBtn)
-
+  li.addEventListener("click", function(){
+    if(!span.classList.contains("completed")){
+      span.classList.toggle("completed")
+    }
+  })
   document.getElementById("task-list").appendChild(li)
 
   input.value = ""
